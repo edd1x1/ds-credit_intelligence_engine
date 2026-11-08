@@ -1,0 +1,107 @@
+{
+  "project_version": "6.0",
+  "as_of": "2026-10-31",
+  "created_at_utc": "2026-11-08T03:28:28.491850+00:00",
+  "data_origin": "SYNTHETIC_SCENARIO",
+  "sources": [
+    "internal_loans",
+    "internal_repayments",
+    "internal_monthly_activity"
+  ],
+  "external_bureau_calls": false,
+  "automatic_credit_approval": false,
+  "consent_status": "UNVERIFIED_REQUIRE_INTERNAL_CRM_CONFIRMATION",
+  "dtiratio_scope": "SAME_BANK_ONLY",
+  "model_use": "PRELIMINARY_MARKETING_ANALYTICS",
+  "risk_model": {
+    "target": "Any DPD30+ within 12 months after loan issue",
+    "validation": "TRAIN historical / CALIBRATION 2023 / OOT 2025",
+    "metrics": {
+      "n": 1890.0,
+      "event_rate": 0.19735449735449737,
+      "roc_auc": 0.7182689129985279,
+      "pr_auc": 0.3679977683788722,
+      "log_loss": 0.4515992766140455,
+      "brier": 0.14398802418686701,
+      "precision": 0.46551724137931033,
+      "recall": 0.07238605898123325,
+      "f1": 0.12529002320185614
+    }
+  },
+  "early_warning": {
+    "target": "New onset of DPD30+ in 30/60/90 days on active loans",
+    "features": [
+      "CurrentDPD",
+      "LoanAgeMonths",
+      "TermMonthsRemaining",
+      "DueUnpaidKGS",
+      "PaymentsDue6M",
+      "MeanPaymentDue6M",
+      "AgreementSumN",
+      "Rate",
+      "LoanTermMonths",
+      "MonthlyPaymentKGS",
+      "IncomeMean6M_KGS",
+      "CashflowMargin6M",
+      "AppActivityDays",
+      "InternalMonthlyDebtKGS",
+      "InternalDTI"
+    ],
+    "validation": "TRAIN 2023-24 / CALIBRATION 2025Apr-Jun / OOT 2025Oct-2026Mar",
+    "metrics": [
+      {
+        "horizon_days": 30,
+        "n": 36049,
+        "events": 901,
+        "event_rate": 0.024993758495381286,
+        "roc_auc": 0.9800362810210373,
+        "pr_auc": 0.5073809402411814,
+        "brier": 0.01636296308592419,
+        "log_loss": 0.05094058089592038
+      },
+      {
+        "horizon_days": 60,
+        "n": 36049,
+        "events": 1696,
+        "event_rate": 0.04704707481483536,
+        "roc_auc": 0.7738912252040278,
+        "pr_auc": 0.3323358664757944,
+        "brier": 0.037492409062188314,
+        "log_loss": 0.15171517693076148
+      },
+      {
+        "horizon_days": 90,
+        "n": 36049,
+        "events": 2410,
+        "event_rate": 0.06685344947155261,
+        "roc_auc": 0.7111008648206322,
+        "pr_auc": 0.28858577562409016,
+        "brier": 0.05504274836148886,
+        "log_loss": 0.21364041402437356
+      }
+    ]
+  },
+  "propensity": {
+    "status": "NOT_TRAINED",
+    "events": 0,
+    "reason": "История маркетинговых кампаний отсутствует. Вероятность отклика не обучена; конверсия задаётся сценарием."
+  },
+  "risk_controls": [
+    "PIT features",
+    "temporal holdout",
+    "calibration",
+    "PSI",
+    "vintage",
+    "roll rates",
+    "ablation",
+    "human review"
+  ],
+  "limitations": [
+    "Synthetic labels and behavioral assumptions",
+    "External debts unknown; DTI internal only",
+    "No marketing consent input",
+    "No propensity model without actual campaign outcomes",
+    "Scenario LGD/EAD and PR not accounting forecasts",
+    "No self-ban check at pre-offer stage; regulated lending workflow remains separate"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "dataset_version": "3.0",
+  "random_seed": 20261103,
+  "snapshot_date": "2026-10-31",
+  "records": {
+    "customers": 16000,
+    "loans": 27831,
+    "installments": 497691,
+    "monthly_activity": 1408000,
+    "model_observations": 27831,
+    "mature_targets": 26652,
+    "marketing_candidates": 12392
+  },
+  "target_rate_dpd30_12m": 0.18520186102356295,
+  "time_split_counts": {
+    "train": 20031,
+    "validation": 4731,
+    "test": 1890
+  },
+  "synthetic_risk_scenario": [
+    "Кара-Суу",
+    "Кара-Балта"
+  ],
+  "sources_scope": "Real city names and public maximum loan limits; all borrowers and risk distributions invented",
+  "caveats": [
+    "Synthetic only. No real account identifiers or bank client observations.",
+    "No actual city-level default statistics underpin city stress assumption.",
+    "Monthly cashflows are synthetic correlated signals; original generated labels were simulated using borrower capacity and latent factors.",
+    "Payment schedule assumes complete installment settlements without partial payments or restructures.",
+    "Product subtypes and nominal rates are illustrative.",
+    "Geography is not a risk-model feature by default; use it for validation and scenario monitoring.",
+    "For prospective marketing, conversion and future repayment target are unknown.",
+    "Last 12-month issue cohorts without follow-up are deliberately unlabeled."
+  ]
+}

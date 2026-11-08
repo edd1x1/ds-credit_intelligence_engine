@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "customers": 16000,
+  "loans": 27831,
+  "repayments": 497691,
+  "months": 88,
+  "monthly_activity": 1408000,
+  "mature_target_rows": 26652,
+  "marketing_candidates": 12392,
+  "city_stress_rate": 0.2607022607022607,
+  "other_city_rate": 0.17881414560696698
+}

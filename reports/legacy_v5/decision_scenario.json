@@ -1,0 +1,45 @@
+{
+  "engine_version": "5.0",
+  "as_of": "2026-10-31",
+  "risk_horizon_days": [
+    30,
+    60,
+    90
+  ],
+  "pr_definition": "Portfolio interest revenue, gross interest, not net profit",
+  "scenario_settings": {
+    "max_pd": 0.18,
+    "max_dti": 0.4,
+    "min_income": 30000,
+    "max_hist_dpd": 29,
+    "include_no_history": false,
+    "max_income_cv": 0.4,
+    "top_n": 300,
+    "funding_rate": 10.0,
+    "lgd": 0.55,
+    "contact_cost": 20.0,
+    "merchant_discount_pct": 3.0,
+    "conversion": 0.08,
+    "diversify_products": true
+  },
+  "kpis": {
+    "as_of": "2026-10-31",
+    "active_loans": 4324,
+    "estimated_balance": 1892036485.8628414,
+    "current_dpd30": 109,
+    "currently_overdue": 425,
+    "candidates": 300,
+    "candidate_total": 12392,
+    "volume_offers": 88463000.0,
+    "expected_accepted": 24.0,
+    "test_auc": 0.7147096092365169,
+    "test_pr_auc": 0.3632017741207376
+  },
+  "assumptions": [
+    "Constant-hazard conversion PD12 to 30/60/90d",
+    "Estimated outstanding from nominal amortization (not booked EAD)",
+    "Campaign conversion manually assumed (no propensity model)",
+    "Product LGD illustrative; customer and loan records simulated",
+    "Recommendations are not approvals or consent for outreach"
+  ]
+}
